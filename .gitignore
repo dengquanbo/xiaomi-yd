@@ -34,5 +34,5 @@ build/
 
 /logs
 
-!/mvnw
-!/mvnw.cmd
+/mvnw
+/mvnw.cmd
