@@ -119,16 +119,16 @@ public class XiaoMiSetStep {
 		// 替换日期
 		Matcher todayMatcher = TODAY_PATTERN.matcher(dataJson);
 		if (todayMatcher.find()) {
-			log.info("第一次替换：{}", todayMatcher.group(1));
+			// log.info("第一次替换：{}", todayMatcher.group(1));
 			dataJson = dataJson.replace(todayMatcher.group(1), today);
 		}
 		// 替换步数
 		Matcher stepMatcher = STEP_PATTERN.matcher(dataJson);
 		if (stepMatcher.find()) {
-			log.info("第二次替换：{}", stepMatcher.group(1));
+			// log.info("第二次替换：{}", stepMatcher.group(1));
 			dataJson = dataJson.replace(stepMatcher.group(1), String.valueOf(step));
 		}
-		log.info("替换后dataJson：{}", dataJson);
+		// log.info("替换后dataJson：{}", dataJson);
 		dataJson = URLDecoder.decode(this.dataJson, Charset.defaultCharset());
 
 		String url = "https://api-mifit-cn.huami.com/v1/data/band_data.json?&t=" + now;
@@ -147,7 +147,7 @@ public class XiaoMiSetStep {
 				.timeout(20000)
 				.execute()
 				.body();
-		log.info("账号：{}，刷步结果：{}", mobile, result);
+		log.info("账号：{}，刷步：{}，结果：{}", mobile, step, result);
 	}
 
 	private String getTime() throws JsonProcessingException {
