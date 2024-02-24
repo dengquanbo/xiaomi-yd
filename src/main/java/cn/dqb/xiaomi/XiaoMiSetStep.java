@@ -80,7 +80,8 @@ public class XiaoMiSetStep {
 		param.put("app_version", "4.6.0");
 		param.put("code", access);
 		param.put("country_code", "CN");
-		param.put("device_id", "2C8B4939-0CCD-4E94-8CBA-CB8EA6E613A1");
+		// param.put("device_id", "2C8B4939-0CCD-4E94-8CBA-CB8EA6E613A1");
+		param.put("device_id", "10E2A98F-D36F-4DF1-A7B9-3FBD8FBEB800");
 		param.put("device_model", "phone");
 		param.put("grant_type", "access_token");
 		param.put("third_name", "huami_phone");
@@ -102,9 +103,11 @@ public class XiaoMiSetStep {
 		String url =
 				"https://account-cn.huami.com/v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token="
 						+ loginToken;
+		log.info("调用获取appToken url：{}", url);
 		String result = HttpRequest.get(url)
-				.header(Header.USER_AGENT, "MiFit/4.6.0 (iPhone; iOS 14.0.1; Scale/2.00)")
+				.header(Header.USER_AGENT, "MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)")
 				.header("Content-Type", "application/x-www-form-urlencoded")
+				.header("X-Forwarded-For", "192.168.31.138")
 				.execute()
 				.body();
 		log.info("调用获取appToken结果：{}", result);
